@@ -13,6 +13,7 @@ if (document.readyState == "loading") {
 
 function App() {
   
+  
   return (
     <div className="bg-gradient-to-br from-[#4f3449] to-[#b16a63]">
       <Header />
