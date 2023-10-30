@@ -1,11 +1,12 @@
 import { motion as m } from "framer-motion";
 import { prints } from "../data/data";
+import StoreItem from "../components/StoreItem";
 
 const Prints = () => {
   return (
     <section className="py-10 pt-28" id="prints">
       <m.h2
-        className="text-4xl text-center w-full py-5 mb-10 bg-[#613f54] font-comfortaa"
+        className="text-4xl text-center w-full py-5 mb-10 border-b-2 border-yellow-950 font-comfortaa"
         initial={{ x: "-200vh" }}
         whileInView={{ x: "0%" }}
         transition={{
@@ -24,13 +25,10 @@ const Prints = () => {
       {prints.map((item) => (
         <m.div
           key={item.id}
-          className="flex flex-wrap justify-center w-1/4 bg-slate-300"
+          className="flex flex-wrap justify-center w-1/4 bg-yellow-50"
           whileInView={{ scale: [0, 1] }}
         >
-          <span className="w-full">{item.name}</span>
-          <img src={item.imgUrl} alt={item.name} className="w-2/3" />
-          <span className="w-full">{item.price}</span>
-          <div className="w-full flex justify-center p-3"><button type="button" className="bg-slate-500">ADD TO CART</button></div>
+          <StoreItem {...item} />
         </m.div>
       ))}
       </m.div>

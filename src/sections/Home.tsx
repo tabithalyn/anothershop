@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion as m } from "framer-motion";
 
+
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const Home = () => {
   }
 
   return (
-    <section className="w-full h-screen flex flex-wrap items-center justify-center bg-orange-300 font-montserrat" id="home">
+    <section className="w-full h-screen flex flex-wrap items-center justify-center font-montserrat" id="home">
       <div className="flex flex-wrap items-center justify-center">
         <div className="w-full flex flex-wrap items-center justify-center">
           <span className="text-7xl text-white text-center w-full font-comfortaa drop-shadow-xl shadow-yellow-700">Art Prints</span>

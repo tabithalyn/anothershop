@@ -23,7 +23,7 @@ const variants = {
 
 const NavMenu = () => {
   return (
-    <nav id="nav-menu" className="font-montserrat w-[98%]">
+    <nav id="nav-menu" className="font-montserrat w-[98%] text-xl ml-6">
       <m.ul variants={variants} initial="hidden" whileInView="visible">
         <m.li variants={variants} className="inline py-2 px-4"><a href="">Home</a></m.li>
         <m.li variants={variants} className="inline py-2 px-4"><a href="">Shop</a></m.li>
