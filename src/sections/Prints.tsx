@@ -4,14 +4,14 @@ import StoreItem from "../components/StoreItem";
 
 const Prints = () => {
   return (
-    <section className="py-10 pt-28" id="prints">
+    <section className="py-10 pt-28 w-full" id="prints">
       <m.h2
         className="text-4xl text-center w-full py-5 mb-10 border-b-2 border-yellow-950 font-comfortaa"
-        initial={{ x: "-200vh" }}
-        whileInView={{ x: "0%" }}
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
         transition={{
-          delay: 0.1,
-          duration: 0.6
+          delay: 0.03,
+          duration: 0.4
         }}
       >PRINTS</m.h2>
       <m.div
@@ -25,7 +25,7 @@ const Prints = () => {
       {prints.map((item) => (
         <m.div
           key={item.id}
-          className="flex flex-wrap justify-center w-1/4 bg-yellow-50"
+          className="flex flex-wrap justify-center w-1/4 xs:w-[45%] sm:w-1/3 xxs:w-[95%] bg-yellow-50"
           whileInView={{ scale: [0, 1] }}
         >
           <StoreItem {...item} />

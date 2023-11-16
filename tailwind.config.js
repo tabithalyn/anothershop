@@ -10,6 +10,7 @@ export default {
       "montserrat": ["Montserrat", "sans-serif"]
     },
     screens: {
+      'xxs': {'min': '200px', 'max': '399px'},
       'xs': {'min': '400px', 'max': '639px'},
       'sm': {'min': '640px', 'max': '767px'},
       'md': {'min': '768px', 'max': '1023px'},

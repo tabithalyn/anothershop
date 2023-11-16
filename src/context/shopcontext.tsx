@@ -27,7 +27,7 @@ export function ShoppingProvider({children}:ShoppingProviderProps) {
   const [cartItems, setCartItems] = useLocalStorage<ShopItem[]>("shopping-cart", []);
 
   const cartQuantity = cartItems.reduce(
-    (quantity:number, item:ShopItem) => item.quantity + quantity, 0
+    (quantity, item) => item.quantity + quantity, 0
   );
 
   const openCart = () => setIsOpen(isOpen);
@@ -38,11 +38,11 @@ export function ShoppingProvider({children}:ShoppingProviderProps) {
   }
 
   const increaseCartQuantity = (id:number) => {
-    setCartItems((currItems:ShopItem[]) => {
-      if (currItems.find((item:ShopItem) => item.id === id) == null) {
+    setCartItems(currItems => {
+      if (currItems.find(item => item.id === id) == null) {
         return [...currItems, { id, quantity: 1 }];
       } else {
-        return currItems.map((item:ShopItem) => {
+        return currItems.map(item => {
           if (item.id === id) {
             return {...item, quantity: item.quantity + 1}
           } else {
@@ -54,11 +54,11 @@ export function ShoppingProvider({children}:ShoppingProviderProps) {
   }
 
   const decreaseCartQuantity = (id:number) => {
-    setCartItems((currItems:ShopItem[]) => {
-      if (currItems.find((item:ShopItem) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item:ShopItem) => item.id !== id);
+    setCartItems(currItems => {
+      if (currItems.find(item => item.id === id)?.quantity === 1) {
+        return currItems.filter(item => item.id !== id);
       } else {
-        return currItems.map((item:ShopItem) => {
+        return currItems.map(item => {
           if (item.id === id) {
             return {...item, quantity: item.quantity - 1}
           } else {
@@ -70,8 +70,8 @@ export function ShoppingProvider({children}:ShoppingProviderProps) {
   }
 
   const removeFromCart = (id:number) => {
-    setCartItems((currItems:ShopItem[]) => {
-      return currItems.filter((item:ShopItem) => item.id !== id);
+    setCartItems(currItems => {
+      return currItems.filter(item => item.id !== id);
     });
   }
 
