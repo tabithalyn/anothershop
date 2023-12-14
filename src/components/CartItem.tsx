@@ -6,24 +6,20 @@ import { formatCurrency } from "../utils/formatCurrency";
 const CartItem = ({id, quantity}:ShopItem) => {
   const { removeFromCart } = useShoppingCart();
 
-  const storeItems = { ...prints, ...clothing, ...homeDecor };
+  const storeItems = [ ...prints, ...clothing, ...homeDecor ];
 
   const item = storeItems.find((i:{id:number}) => i.id === id);
   if (item == null) return null;
 
   return (
-    <div>
-      <div>
-        <img src={item.imgUrl} alt={item.name} />
-      </div>
-      <div>
-        <span>{item.name}</span>
-        <span>{formatCurrency(item.price)}</span>
-        <span>x{quantity} | {formatCurrency(item.price * quantity)}</span>
-      </div>
-      <div>
+    <div className="w-full bg-rose-600 m-1 flex flex-wrap">
+      <img src={item.imgUrl} alt={item.name} className="w-[15%] float-left" />
+      <div className="flex flex-wrap items-center justify-end w-[80%] ml-[2%]">
+        <span className="bg-rose-700 w-full">{item.name}</span>
+        <span className="bg-rose-400 w-full">{formatCurrency(item.price)}</span>
+        <span className="bg-rose-200 w-full">(x{quantity}) {formatCurrency(item.price * quantity)}</span>
         <button onClick={() => removeFromCart(item.id)}>
-          <i className="bi bi-x"></i>
+          REMOVE
         </button>
       </div>
     </div>

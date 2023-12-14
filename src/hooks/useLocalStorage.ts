@@ -4,7 +4,6 @@ export default function useLocalStorage<T>(key:string, initialValue: T | (() => 
   const [value, setValue] = useState<T>(() => {
     const jsonValue = localStorage.getItem(key);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     if (jsonValue != null) return JSON.parse(jsonValue);
 
     if (typeof initialValue === "function") {

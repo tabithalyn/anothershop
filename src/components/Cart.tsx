@@ -3,12 +3,13 @@ import { useShoppingCart } from "../hooks/useShoppingCart";
 import { formatCurrency } from "../utils/formatCurrency";
 import CartItem from "./CartItem";
 import { prints, clothing, homeDecor } from "../data/data";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, cartQuantity } = useShoppingCart();
   const [showCart, setShowCart] = useState<boolean>(false);
 
-  const storeItems = { ...prints, ...clothing, ...homeDecor };
+  const storeItems = [ ...prints, ...clothing, ...homeDecor ];
 
   const getTotal = (
     cartItems.reduce((total, cartItem) => {
@@ -41,8 +42,7 @@ const Cart = () => {
               Subtotal: <span className="font-bold font-montserrat">{formatCurrency(getTotal)}</span>
             </p>
             <p className="w-full bg-orange-400 flex flex-wrap items-center justify-center p-3 gap-2 text-lg">
-              <button disabled={getTotal === 0} className="p-3 border border-stone-800">VIEW BAG</button>
-              <button disabled={getTotal === 0} className="p-3 border border-stone-800">CHECKOUT</button>
+              <button disabled={getTotal === 0} className="p-3 border border-stone-800"><Link to={"/viewcart"}>VIEW CART</Link></button>
             </p>
           </div>
         </div>

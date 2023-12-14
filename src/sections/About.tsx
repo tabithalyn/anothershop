@@ -2,7 +2,7 @@ import { motion as m } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="h-[55vh] mt-10 flex flex-wrap justify-center items-center">
+    <div className="h-[55vh] mt-10 flex flex-wrap justify-center items-center" id="about">
       <m.div
         className="w-4/5 bg-yellow-100 border border-gray-950 h-4/5 text-slate-900 flex flex-wrap justify-center items-center px-5 pb-5 pt-2 overflow-y-auto"
         initial={{ scale: 0 }}

@@ -1,8 +1,8 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import About from "./sections/About";
-import Shop from "./sections/Shop";
+import { Route, Routes } from "react-router-dom";
 import { ShoppingProvider } from "./context/ShopContext";
+import Main from "./pages/Main";
+import ViewCart from "./pages/ViewCart";
+import Checkout from "./pages/Checkout";
 
 // https://github.com/tabithalyn/artsyshoppe/blob/main/index.html
 
@@ -17,12 +17,11 @@ function App() {
   
   return (
     <ShoppingProvider>
-      <div className="bg-gradient-to-b from-orange-300 to-[#fcc183]">
-        <Header />
-        <Shop />
-        <About />
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/viewcart" element={<ViewCart />} />
+        <Route path="/checkout" element={<Checkout />} />
+      </Routes>
     </ShoppingProvider>
   );
 }
