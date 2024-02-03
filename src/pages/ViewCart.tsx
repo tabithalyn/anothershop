@@ -47,33 +47,46 @@ const ViewCart = () => {
       </div>
     </header>
     <section className="w-full h-screen flex flex-wrap items-center justify-center font-montserrat bg-orange-300" id="home">
-      <div className="flex flex-wrap items-center justify-center w-full mt-[10vh]">
-        <div className="w-3/5 flex flex-wrap items-center justify-center mb-10 bg-orange-50 shadow-lg shadow-orange-800 h-[85vh] overflow-y-auto p-3">
-          <div className="bg-orange-500 w-full pl-3 flex justify-center items-center flex-wrap">
-            <span className="w-1/2"><Link to={"/"}>&larr; Continue Shopping</Link></span>
-            <span className="font-bold p-4 bg-red-300 w-1/2 text-right pr-3">Cart Items <span className="bg-red-500 py-2 px-3.5 rounded-full ml-1">{cartQuantity}</span></span>
+      <div className="flex flex-wrap items-center justify-center w-full mt-[8vh]">
+        <div className="w-3/5 flex flex-wrap justify-center mb-10 bg-orange-50 shadow-lg shadow-orange-800 h-[80vh] overflow-y-auto p-3">
+          <div className="bg-orange-400 w-full h-1/6 pl-3 flex justify-center items-center flex-wrap py-2">
+            <span className="w-2/3 xs:text-sm xs:tracking-tight"><Link to={"/"}>&larr; Continue Shopping</Link></span>
+            <span className="font-bold w-1/3 text-right xs:text-sm xs:tracking-tight border border-orange-400">Items <span className="bg-yellow-100 py-2 px-3.5 rounded-full ml-1 xl:mr-4 lg:mr-4 md:mr-2">{cartQuantity}</span></span>
           </div>
-          <div className="flex flex-wrap bg-rose-400 items-center justify-center">
-            <div className="flex flex-wrap w-full p-2">
-              {cartItems?.map((item) => (
-                <li key={item.id} className="list-none w-full">
-                  <CartItem {...item} />
-                </li>
-              ))}
-            </div>
-            <div className="w-full bg-red-400 p-4">
+          <div className="w-full flex items-stretch h-2/6 overflow-y-auto">
+            {cartQuantity > 0 ? (
+              <div className="flex flex-wrap w-full p-2">
+                {cartItems?.map((item) => (
+                  <li key={item.id} className="list-none w-full">
+                    <CartItem {...item} />
+                  </li>
+                ))}
+              </div>
+            ) : (
+              <div className="w-full h-full flex justify-center items-center">Nothing here yet!</div>
+            )}
+          </div>
+          <div className="flex flex-wrap items-center justify-center w-full">
+            <div className="w-full bg-orange-200 p-4">
               <span className="text-lg">Subtotal:</span> <span className="font-bold font-comfortaa text-lg">{formatCurrency(getTotal)}</span><br />
               Shipping: {getTotal > 100 ? (
                 <span className="font-bold font-comfortaa">FREE</span>
               ) : <span className="font-bold font-comfortaa">$5.00</span>}<br /><br />
-              <span className="text-2xl">Total:</span> {getTotal > 100 ? (
-                <span className="font-bold font-comfortaa text-2xl">{formatCurrency(getTotal)}</span>
-              ) : (
-                <span className="font-bold font-comfortaa text-2xl">{formatCurrency(getTotal + 5)}</span>
+              <span className="text-2xl xs:text-xl">Total:</span>
+              {getTotal > 100 && (
+                <span className="font-bold font-comfortaa text-2xl xs:text-xl">{formatCurrency(getTotal)}</span>
+              )}
+              {getTotal > 0 && getTotal < 100 && (
+                <span className="font-bold font-comfortaa text-2xl xs:text-xl">{formatCurrency(getTotal + 5)}</span>
+              )}
+              {getTotal === 0 && (
+                <span className="font-bold font-comfortaa text-2xl xs:text-xl">{formatCurrency(getTotal)}</span>
               )}
             </div>
-            <div className="w-full bg-red-600 p-4 text-center">
-              <Link to={"/checkout"} className="bg-red-200 p-4">Checkout</Link>
+            <div className="w-full bg-orange-400 p-4 flex flex-wrap items-center justify-center">
+              <div className="text-xl xs:text-xl xs:w-full bg-yellow-100 border border-gray-950 w-1/3 md:w-1/2 p-2 h-12 transition-all flex flex-wrap items-center justify-center hover:cursor-pointer skew-y-3 xs:mx-3 sm:mx-3 sm:w-full sm:text-lg xxs:text-lg xxs:w-full xxs:mx-3">
+                <Link to={"/checkout"}>Checkout</Link>
+              </div>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/viewcart" element={<ViewCart />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<Checkout id={0} quantity={0} />} />
       </Routes>
     </ShoppingProvider>
   );

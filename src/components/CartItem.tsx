@@ -12,13 +12,13 @@ const CartItem = ({id, quantity}:ShopItem) => {
   if (item == null) return null;
 
   return (
-    <div className="w-full bg-rose-600 m-1 flex flex-wrap">
-      <img src={item.imgUrl} alt={item.name} className="w-[15%] float-left" />
-      <div className="flex flex-wrap items-center justify-end w-[80%] ml-[2%]">
-        <span className="bg-rose-700 w-full">{item.name}</span>
-        <span className="bg-rose-400 w-full">{formatCurrency(item.price)}</span>
-        <span className="bg-rose-200 w-full">(x{quantity}) {formatCurrency(item.price * quantity)}</span>
-        <button onClick={() => removeFromCart(item.id)}>
+    <div className="w-full m-1 flex flex-wrap">
+      <img src={item.imgUrl} alt={item.name} className="w-[13%] xs:w-[20%] float-left xs:h-full xs:mt-2 xs:mr-2" />
+      <div className="flex flex-wrap items-center justify-end w-[80%] xs:w-[70%] ml-[2%] border-b border-b-orange-800">
+        <span className="w-full text-xl sm:text-lg xs:text-base">{item.name}</span>
+        <span className="w-full text-lg xs:text-base">{formatCurrency(item.price)}</span>
+        <span className="w-full xs:text-sm">(x{quantity}) {formatCurrency(item.price * quantity)}</span>
+        <button onClick={() => removeFromCart(item.id)} className="text-red-800 hover:text-red-700 hover:font-semibold p-2 text-sm xs:text-xs xs:-mt-2">
           REMOVE
         </button>
       </div>
