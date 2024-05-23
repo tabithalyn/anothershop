@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NavMenu from "../components/NavMenu";
+import NavMenu from "../components/page/NavMenu";
 import { motion as m } from "framer-motion";
 import { useShoppingCart } from "../hooks/useShoppingCart";
 import { formatCurrency } from "../utils/formatCurrency";
-import CartItem from "../components/CartItem";
+import CartItem from "../components/shop/CartItem";
 import { prints, clothing, homeDecor } from "../data/data";
 
 const ViewCart = () => {

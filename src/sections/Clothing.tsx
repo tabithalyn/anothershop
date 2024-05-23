@@ -1,6 +1,6 @@
 import { motion as m } from "framer-motion";
 import { clothing } from "../data/data";
-import StoreItem from "../components/StoreItem";
+import StoreItem from "../components/shop/StoreItem";
 
 const Clothing = () => {
   return (

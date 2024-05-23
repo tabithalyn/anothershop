@@ -1,5 +1,5 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/page/Header";
+import Footer from "../components/page/Footer";
 import About from "../sections/About";
 import Shop from "../sections/Shop";
 // import FormatCurrency from "./components/FormatCurrency";

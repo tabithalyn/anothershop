@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NavMenu from "./NavMenu";
 import { motion as m } from "framer-motion";
-import Cart from "./Cart";
+import Cart from "../shop/Cart";
 
 const Header = () => {
   const [menu, showMenu] = useState<boolean>(false);
@@ -57,13 +57,13 @@ const Header = () => {
         </>
       ) : (
         <>
-        <div className="w-3/5 flex flex-wrap items-center justify-start p-2 bg-orange-300">
+        <div className="w-4/5 flex flex-wrap items-center justify-start p-2 bg-orange-300">
           <m.div
             className="flex flex-wrap w-full justify-start"
             whileInView={{ x: ["-100%", "0%"] }}
             transition={{ duration: 0.2, delay: 0.02 }}
           >
-            <div>
+            <div className="inline-block">
             {!menu ? (
               <span onClick={() => showMenu(!menu)} className="hover:cursor-pointer hover:text-orange-500 transition-all text-lg xs:text-[20px] sm:text-[20px] xl:text-2xl lg:text-2xl">
                 <i className="bi bi-list"></i>
@@ -81,7 +81,7 @@ const Header = () => {
         </div>
         </>
       )}
-      <div className={isScrolled ? "w-auto h-full flex flex-wrap justify-end items-center bg-orange-200 text-lg mr-6 -mt-[37px] xs:mr-4 xl:text-2xl lg:text-2xl xl:-mt-[45px] lg:-mt-[45px]" : "w-2/5 flex flex-wrap p-3 justify-end items-center bg-orange-300 xl:text-2xl lg:text-2xl"}>
+      <div className={isScrolled ? "w-auto h-full flex flex-wrap justify-end items-center bg-orange-200 text-lg mr-6 -mt-[37px] xs:mr-4 xl:text-2xl lg:text-2xl xl:-mt-[45px] lg:-mt-[45px]" : "w-1/5 flex flex-wrap p-3 justify-end items-center bg-orange-300 xl:text-2xl lg:text-2xl"}>
         <Cart />
       </div>
     </header>

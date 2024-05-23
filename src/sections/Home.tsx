@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion as m } from "framer-motion";
 
-
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useShoppingCart } from "../hooks/useShoppingCart";
-import { formatCurrency } from "../utils/formatCurrency";
+import { useShoppingCart } from "../../hooks/useShoppingCart";
+import { formatCurrency } from "../../utils/formatCurrency";
 import CartItem from "./CartItem";
-import { prints, clothing, homeDecor } from "../data/data";
+import { prints, clothing, homeDecor } from "../../data/data";
 import { Link } from "react-router-dom";
 
 const Cart = () => {

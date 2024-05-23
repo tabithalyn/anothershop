@@ -1,5 +1,5 @@
-import { useShoppingCart } from "../hooks/useShoppingCart";
-import { formatCurrency } from "../utils/formatCurrency";
+import { useShoppingCart } from "../../hooks/useShoppingCart";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 type StoreProps = {
   id: number;

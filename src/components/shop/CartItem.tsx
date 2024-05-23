@@ -1,7 +1,7 @@
-import { ShopItem } from "../context/ShopContext";
-import { useShoppingCart } from "../hooks/useShoppingCart";
-import { prints, clothing, homeDecor } from "../data/data";
-import { formatCurrency } from "../utils/formatCurrency";
+import { ShopItem } from "../../context/ShopContext";
+import { useShoppingCart } from "../../hooks/useShoppingCart";
+import { prints, clothing, homeDecor } from "../../data/data";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 const CartItem = ({id, quantity}:ShopItem) => {
   const { removeFromCart } = useShoppingCart();
@@ -18,9 +18,11 @@ const CartItem = ({id, quantity}:ShopItem) => {
         <span className="w-full text-xl sm:text-lg xs:text-base">{item.name}</span>
         <span className="w-full text-lg xs:text-base">{formatCurrency(item.price)}</span>
         <span className="w-full xs:text-sm">(x{quantity}) {formatCurrency(item.price * quantity)}</span>
-        <button onClick={() => removeFromCart(item.id)} className="text-red-800 hover:text-red-700 hover:font-semibold p-2 text-sm xs:text-xs xs:-mt-2">
-          REMOVE
-        </button>
+        {window.location.pathname !== "/checkout" ? (
+          <button onClick={() => removeFromCart(item.id)} className="text-red-800 hover:text-red-700 hover:font-semibold p-2 text-sm xs:text-xs xs:-mt-2">
+            REMOVE
+          </button>
+        ) : null}
       </div>
     </div>
   );

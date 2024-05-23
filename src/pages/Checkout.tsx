@@ -1,17 +1,28 @@
 import { m } from "framer-motion";
-import { Link } from "react-router-dom";
-import NavMenu from "../components/NavMenu";
-import { useState } from "react";
+// import { Link } from "react-router-dom";
+import NavMenu from "../components/page/NavMenu";
+import { useState, useEffect } from "react";
 import { prints, clothing, homeDecor } from "../data/data";
 import { useShoppingCart } from "../hooks/useShoppingCart";
 import { formatCurrency } from "../utils/formatCurrency";
 import { ShopItem } from "../context/ShopContext";
+import CartItem from "../components/shop/CartItem";
 
-const Checkout = ({id, quantity}:ShopItem) => {
+const Checkout = ({id}:ShopItem) => {
   const [menu, showMenu] = useState<boolean>(false);
+  const minimum = 123456789;
+  const maximum = 345678912;
+  const [randomNum, setRandomNum] = useState(123456789);
   const { cartItems, cartQuantity } = useShoppingCart();
 
   const storeItems = [ ...prints, ...clothing, ...homeDecor ];
+
+  useEffect(() => {
+    const getOrderNumber = () => {
+      setRandomNum(Math.floor(Math.random() * (maximum - minimum + 1) + minimum));
+    }
+    getOrderNumber();
+  }, []);
 
   const item = storeItems.find((i:{id:number}) => i.id === id);
   if (item == null) return null;
@@ -49,22 +60,23 @@ const Checkout = ({id, quantity}:ShopItem) => {
         </m.div>
       </div>
     </header>
-    <section className="w-full h-screen flex flex-wrap items-center justify-center font-montserrat bg-orange-300" id="home">
+    <section className="w-full h-screen flex flex-wrap items-center justify-center font-montserrat bg-orange-300 overflow-y-hidden" id="home">
       <div className="flex flex-wrap items-center justify-center w-full mt-[10vh]">
-        <div className="w-3/5 flex flex-wrap items-center justify-center mb-10 bg-orange-50 shadow-lg shadow-orange-800 h-[85vh] overflow-y-auto p-3">
-          <div className="bg-orange-500 w-full pl-3 flex justify-center items-center flex-wrap">
-            <span className="w-1/2"><Link to={"/"}>&larr; Continue Shopping</Link></span>
-            <span className="font-bold p-4 bg-red-300 w-1/2 text-right pr-3">Cart Items <span className="bg-red-500 py-2 px-3.5 rounded-full ml-1">{cartQuantity}</span></span>
+        <div className="w-3/5 flex flex-wrap items-center justify-center mb-10 bg-orange-50 shadow-lg shadow-orange-800 h-[75vh] overflow-y-auto p-3">
+          <div className="bg-orange-500 w-full pl-3 flex justify-center items-center flex-wrap text-center">
+            <h1 className="w-full text-3xl">Thanks for your order!</h1>
+            <h2 className="w-full text-xl">Order # {randomNum}</h2>
           </div>
           <div className="flex flex-wrap items-center justify-center">
-            <div className="flex flex-wrap w-full p-2">
-              <img src={item.imgUrl} alt={item.name} className="w-[13%] float-left" />
-            </div>
-            <div className="w-full p-4">
-              <span className="bg-rose-700 w-full">{item.name}</span>
-              <span className="bg-rose-400 w-full">{formatCurrency(item.price)}</span>
-              <span className="bg-rose-200 w-full">(x{quantity}) {formatCurrency(item.price * quantity)}</span>
-            </div>
+            {cartQuantity > 0 ? (
+              <div className="flex flex-wrap w-full p-2 justify-center mb-5">
+                {cartItems?.map((item) => (
+                  <li key={item.id} className="list-none w-full">
+                    <CartItem {...item} />
+                  </li>
+                ))}
+              </div>
+            ) : null}
             <div className="w-full p-4">
               <span className="text-lg">Subtotal:</span> <span className="font-bold font-comfortaa text-lg">{formatCurrency(getTotal)}</span><br />
               Shipping:
