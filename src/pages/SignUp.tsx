@@ -7,19 +7,21 @@ import Header from "../components/page/Header";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userId, setUserId] = useState("");
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e:{preventDefault: () => void}) => {
+  const handleSubmit = async (e:{preventDefault: () => void}) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        setUserId(userCredential.user.uid);
-        console.log(userCredential.user.uid);
-      })
-      .catch((error) => console.log(error));
-    navigate(`/account/${userId}`);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log(user);
+      localStorage.setItem("token", user.uid);
+      localStorage.setItem("user", JSON.stringify(user));
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -44,11 +46,10 @@ const SignUp = () => {
                 id="password"
                 placeholder="Password..."
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}                className="w-80 p-5 outline-none block m-5 border border-orange-950"
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-80 p-5 outline-none block m-5 border border-orange-950"
               ></input>
-              <button type="submit" className="bg-yellow-200 border border-yellow-950 skew-y-3 p-2 text-lg xs:text-sm hover:bg-yellow-300 transition-all hover:border-orange-950 hover:text-orange-950 w-72 my-5 mx-10">
-                <Link to={`/account/${userId}`}>Sign Up</Link>
-              </button>
+              <button type="submit" className="bg-yellow-200 border border-yellow-950 skew-y-3 p-2 text-lg xs:text-sm hover:bg-yellow-300 transition-all hover:border-orange-950 hover:text-orange-950 w-72 my-5 mx-10">Sign Up</button>
             </form>
             <h3 className="text-lg w-full text-center p-5">Already have an account? <Link to="/signin">Sign In</Link></h3>
           </div>

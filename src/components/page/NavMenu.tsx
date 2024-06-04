@@ -22,9 +22,10 @@ const variants = {
   }
 }
 
-
 const NavMenu = () => {
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
 
   const handleSectionLink = (section:string) => {
     document.getElementById(`${section}`)?.scrollIntoView({
@@ -38,10 +39,10 @@ const NavMenu = () => {
         <m.li variants={variants} className="inline p-2 xs:px-2 hover:cursor-pointer"><Link to={"/"}>Shop</Link></m.li>
         <m.li variants={variants} className="inline p-2 xs:px-2 hover:cursor-pointer"><a onClick={() => handleSectionLink("about")}>About</a></m.li>
         <m.li variants={variants} className="inline p-2 xs:px-2 hover:cursor-pointer"><a href="https://www.redbubble.com/people/pinkmonkeybird/explore?asc=u&page=1&sortOrder=recent">RedBubble</a></m.li>
-        {!auth.currentUser?.uid ? (
+        {!token ? (
           <m.li variants={variants} className="inline p-2 xs:px-2 hover:cursor-pointer"><a onClick={() => navigate("/signin")}>Sign In</a></m.li>
         ) : null}
-        {auth.currentUser?.uid ? (
+        {token ? (
           <m.li variants={variants} className="inline p-2 xs:px-2 hover:cursor-pointer"><a onClick={() => navigate(`/account/${auth.currentUser?.uid}`)}>Account</a></m.li>
         ) : null}
       </m.ul>

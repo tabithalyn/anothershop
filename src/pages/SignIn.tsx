@@ -4,26 +4,25 @@ import { auth } from "../data/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/page/Header";
 
-// https://github.com/developedbyed/react-auth-firebase/blob/main/pages/auth/login.js ???
-// https://www.thapatechnical.com/2022/08/complete-user-registration-login-logout.html ?? (uses Auth0)
-// https://www.youtube.com/watch?v=aNMnyLjFqYI ?? (firebase)
-
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userId, setUserId] = useState("");
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e:{preventDefault: () => void}) => {
+  const handleSubmit = async (e:{preventDefault: () => void}) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential.user.uid);
-        setUserId(userCredential.user.uid.toString());
-        navigate(`/account/${userId}`);
-      })
-      .catch((error) => console.log(error));
+    await signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      localStorage.setItem("token", user.uid);
+      localStorage.setItem("user", JSON.stringify(user));
+      navigate(`/account/${user.uid}`);
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Password is incorrect.");
+    });
   }
 
   return (
@@ -42,6 +41,7 @@ const SignIn = () => {
                 autoComplete="off"
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-80 p-5 outline-none block m-5 border border-orange-950"
+                required
               ></input>
               <input
                 type="password"
@@ -50,6 +50,7 @@ const SignIn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-80 p-5 outline-none block m-5 border border-orange-950"
+                required
               ></input>
               <button type="submit" className="bg-yellow-200 border border-yellow-950 skew-y-3 p-2 text-lg xs:text-sm hover:bg-yellow-300 transition-all hover:border-orange-950 hover:text-orange-950 w-72 my-5 mx-10">
                 Log In
