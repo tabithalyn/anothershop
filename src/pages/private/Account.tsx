@@ -66,8 +66,11 @@ const Account = () => {
           {
             token ? (
               <div className="mb-20">
-                <h1>Welcome, {auth.currentUser?.email}!</h1>
-                <h3>Your ID is {id}.</h3>
+                <div className="mb-10">
+                  <h1>Welcome, {auth.currentUser?.email}!</h1>
+                  <h3>Your ID is {id}.</h3>
+                  <Link to={`/account/${id}/orders`}>View Orders</Link>
+                </div>
                 <p>
                 <button type="submit" className="bg-yellow-200 border border-yellow-950 skew-y-3 p-2 text-lg xs:text-sm hover:bg-yellow-300 transition-all hover:border-orange-950 hover:text-orange-950 w-72 my-2 mx-10" onClick={signout}>Sign Out</button>
                 </p>

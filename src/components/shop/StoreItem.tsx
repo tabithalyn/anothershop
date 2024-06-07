@@ -26,7 +26,7 @@ const StoreItem = ({ id, name, price, imgUrl }:StoreProps) => {
         <div>
           {quantity === 0 ? (
             <div className="w-full flex justify-center p-3">
-              <button onClick={() => increaseCartQuantity(id)} className="bg-yellow-200 border border-yellow-950 skew-y-3 p-2 text-lg xs:text-sm hover:bg-yellow-300 transition-all hover:border-orange-950 hover:text-orange-950">
+              <button onClick={() => increaseCartQuantity(id, name)} className="bg-yellow-200 border border-yellow-950 skew-y-3 p-2 text-lg xs:text-sm hover:bg-yellow-300 transition-all hover:border-orange-950 hover:text-orange-950">
                 + Add to Cart
               </button>
             </div>
@@ -36,7 +36,7 @@ const StoreItem = ({ id, name, price, imgUrl }:StoreProps) => {
                 <i className="bi bi-dash"></i>
               </button>
               <span className="text-lg mx-4">{quantity}</span>
-              <button onClick={() => increaseCartQuantity(id)} className="hover:text-yellow-600">
+              <button onClick={() => increaseCartQuantity(id, name)} className="hover:text-yellow-600">
                 <i className="bi bi-plus"></i>
               </button>
               <div className="mt-0.5">

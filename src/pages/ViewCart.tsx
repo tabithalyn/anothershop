@@ -84,9 +84,11 @@ const ViewCart = () => {
               )}
             </div>
             <div className="w-full bg-orange-400 p-4 flex flex-wrap items-center justify-center">
-              <div className="text-xl xs:text-xl xs:w-full bg-yellow-100 border border-gray-950 w-1/3 md:w-1/2 p-2 h-12 transition-all flex flex-wrap items-center justify-center hover:cursor-pointer skew-y-3 xs:mx-3 sm:mx-3 sm:w-full sm:text-lg xxs:text-lg xxs:w-full xxs:mx-3">
-                <Link to={"/checkout"}>Checkout</Link>
-              </div>
+              {cartQuantity > 0 ? (
+                <div className="text-xl xs:text-xl xs:w-full bg-yellow-100 border border-gray-950 w-1/3 md:w-1/2 p-2 h-12 transition-all flex flex-wrap items-center justify-center hover:cursor-pointer skew-y-3 xs:mx-3 sm:mx-3 sm:w-full sm:text-lg xxs:text-lg xxs:w-full xxs:mx-3">
+                  <Link to={"/checkout"}>Checkout</Link>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
