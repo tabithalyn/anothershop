@@ -25,7 +25,7 @@ const Footer = () => {
         initial="hidden"
         whileInView="visible"
       >
-        <m.h3 variants={variants} className="w-full text-left pt-2 px-2 font-bold font-montserrat border-b-2 border-blue-500">One</m.h3>
+        <m.h3 variants={variants} className="w-full text-left pt-2 px-2 font-bold font-montserrat border-b-2 border-orange-500">One</m.h3>
         <m.li variants={variants} className="w-full px-4 py-1 flex flex-wrap items-center">
           <a href="">Link</a>
         </m.li>
@@ -42,7 +42,7 @@ const Footer = () => {
         initial="hidden"
         whileInView="visible"
       >
-        <m.h3 variants={variants} className="w-full text-left pt-2 px-2 font-bold font-montserrat border-b-2 border-blue-800">Two</m.h3>
+        <m.h3 variants={variants} className="w-full text-left pt-2 px-2 font-bold font-montserrat border-b-2 border-orange-600">Two</m.h3>
         <m.li variants={variants} className="w-full px-4 py-1 flex flex-wrap items-center">
           <a href="">Link</a>
         </m.li>
@@ -59,7 +59,7 @@ const Footer = () => {
         initial="hidden"
         whileInView="visible"
       >
-        <m.h3 variants={variants} className="w-full text-left pt-2 px-2 font-bold font-montserrat border-b-2 border-blue-800">Three</m.h3>
+        <m.h3 variants={variants} className="w-full text-left pt-2 px-2 font-bold font-montserrat border-b-2 border-orange-700">Three</m.h3>
         <m.li variants={variants} className="w-full px-4 py-1 flex flex-wrap items-center">
           <a href="">Link</a>
         </m.li>

@@ -47,7 +47,8 @@ const Account = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         console.clear();
-        console.log("User has been successfully deleted from database.")
+        console.log("User has been successfully deleted from database.");
+        navigate("/");
       } catch (error) {
         console.log(error);
       }

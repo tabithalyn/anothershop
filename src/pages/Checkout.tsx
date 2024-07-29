@@ -81,8 +81,8 @@ const Checkout = ({id}:ShopItem) => {
               <span className="text-lg">Subtotal:</span> <span className="font-bold font-comfortaa text-lg">{formatCurrency(getTotal)}</span><br />
               Shipping:
               {getTotal >= 100 ? (
-                <span className="font-bold font-comfortaa">FREE</span>
-              ) : <span className="font-bold font-comfortaa">$5.00</span>}<br /><br />
+                <span className="font-bold font-comfortaa"> FREE</span>
+              ) : <span className="font-bold font-comfortaa"> $5.00</span>}<br /><br />
               <span className="text-2xl">Total:</span>
               {getTotal > 0 ? (
                 <span className="font-bold font-comfortaa text-2xl">{formatCurrency(getTotal + 5)}</span>

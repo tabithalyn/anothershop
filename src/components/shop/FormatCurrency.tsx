@@ -7,7 +7,7 @@ const FormatCurrency = () => {
   const [resData, setResData] = useState<AxiosResponse[]|any[]>([]);
   const [fromCurrency, setFromCurrency] = useState(0);
   const [toCurrency, setToCurrency] = useState(0);
-  const [ defaultCurrency, setDefaultCurrency ] = useState(0);
+  const [defaultCurrency, setDefaultCurrency] = useState(0);
 
   const URL = `https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_cDjnWj7wLG1K3jiTqp3tcDubW3VAbNA3wTNCnPtI`;
 
@@ -20,8 +20,8 @@ const FormatCurrency = () => {
   }, []);
 
   useEffect(() => {
-    const setCurrency = (item:{USD:number}) => {
-      setDefaultCurrency(item.USD);
+    const setCurrency = (item:number) => {
+      setDefaultCurrency(item);
     }
     setCurrency(fromCurrency);
   }, []);

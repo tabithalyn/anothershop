@@ -18,7 +18,11 @@ export default {
       'xl': {'min': '1280px', 'max': '1535px'},
       '2xl': {'min': '1536px'},
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        "3xl": "1px -1px 20px 5px rgba(253, 186, 116, 1)"
+      }
+    },
   },
   plugins: [],
 }

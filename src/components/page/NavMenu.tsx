@@ -36,7 +36,7 @@ const NavMenu = () => {
 
   return (
     <nav id="nav-menu" className="font-montserrat w-[88%] text-lg sm:text-[16px] xs:text-[16px] lg:text-2xl xl:text-2xl z-30 xs:w-[78%] sm:w-[78%] xl:w-[95%]">
-      <m.ul variants={variants} initial="hidden" whileInView="visible" className="w-[70%] ml-8">
+      <m.ul variants={variants} initial="hidden" whileInView="visible" className="w-[70%] ml-8 mt-1">
         <m.li variants={variants} className="inline p-2 xs:px-2 hover:cursor-pointer">
           {
             location.pathname === "/" ? (
@@ -57,22 +57,22 @@ const NavMenu = () => {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 -translate-y-1"
                 >
-                  <MenuItems anchor="top" className={"flex flex-wrap w-1/6 transition-all mt-4 ml-10 bg-orange-300"}>
+                  <MenuItems anchor="top" className={"flex flex-wrap pt-5 pb-10 px-5 xxs:w-[60%] xs:w-[40%] sm:w-[38%] md:w-[32%] lg:w-[22%] xl:w-[18%] gap-2 transition-all mt-2 ml-10"}>
                     <MenuItem>
-                      <a className="w-full hover:cursor-pointer hover:tracking-wider transition-all p-4" onClick={() => handleSectionLink("clothing")}>
-                        <span className="bg-orange-200 rounded-full p-3"><i className={`fa-solid fa-shirt`}></i></span>
+                      <a className="w-full hover:cursor-pointer hover:tracking-wider transition-all p-4 bg-orange-200 skew-y-3 border border-black shadow-3xl" onClick={() => handleSectionLink("clothing")}>
+                        <span className="bg-orange-100 rounded-full p-3"><i className={`fa-solid fa-shirt`}></i></span>
                         <span className="uppercase text-sm ml-4 font-semibold">Clothing</span>
                       </a>
                     </MenuItem>
                     <MenuItem>
-                      <a className="w-full hover:cursor-pointer hover:tracking-wider transition-all p-4" onClick={() => handleSectionLink("home-decor")}>
-                        <span className="bg-orange-200 rounded-full p-3"><i className={`fa-solid fa-mug-saucer`}></i></span>
+                      <a className="w-full hover:cursor-pointer hover:tracking-wider transition-all p-4 bg-orange-200 skew-y-3 border border-black shadow-3xl" onClick={() => handleSectionLink("home-decor")}>
+                        <span className="bg-orange-100 rounded-full p-3"><i className={`fa-solid fa-mug-saucer`}></i></span>
                         <span className="uppercase text-sm ml-4 font-semibold">Home Decor</span>
                       </a>
                     </MenuItem>
                     <MenuItem>
-                      <a className="w-full hover:cursor-pointer hover:tracking-wider transition-all p-4" onClick={() => handleSectionLink("prints")}>
-                        <span className="bg-orange-200 rounded-full p-3"><i className={`fa-solid fa-image`}></i></span>
+                      <a className="w-full hover:cursor-pointer hover:tracking-wider transition-all p-4 bg-orange-200 skew-y-3 border border-black shadow-3xl" onClick={() => handleSectionLink("prints")}>
+                        <span className="bg-orange-100 rounded-full p-3"><i className={`fa-solid fa-image`}></i></span>
                         <span className="uppercase text-sm ml-4 font-semibold">Prints</span>
                       </a>
                     </MenuItem>
